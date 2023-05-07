@@ -9,7 +9,8 @@ export const bookService = {
     get,
     remove,
     save,
-    getEmptyBook
+    getEmptyBook,
+    getDefaultFilter
 }
 
 function query(filterBy = {}) {
@@ -43,6 +44,10 @@ function save(book) {
     }
 }
 
+function getDefaultFilter() {
+    return { title: '', maxPrice: '' }
+}
+
 function getEmptyBook(title = '', listPrice = '') {
     return {
         id: '',
@@ -60,7 +65,6 @@ function _createBooks() {
         books.push(_createBook('Jane Eyre', 123))
         utilService.saveToStorage(BOOK_KEY, books)
     }
-    console.log('books: ', books)
 }
 
 function _createBook(title, listPrice) {

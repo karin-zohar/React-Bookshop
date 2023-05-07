@@ -23,9 +23,9 @@ export function App() {
                 </nav>
             </header>
             <main>
-                {/* {page === 'home' && <HomePage />}
+                {page === 'home' && <HomePage />}
                 {page === 'about' && <AboutUs />} 
-                {page === 'book' && <BookIndex />} */}
+                {/* {page === 'book' && <BookIndex />} */}
             </main>
         </section>
     )
