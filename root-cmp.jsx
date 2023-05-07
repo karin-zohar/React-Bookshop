@@ -25,7 +25,7 @@ export function App() {
             <main>
                 {page === 'home' && <HomePage />}
                 {page === 'about' && <AboutUs />} 
-                {/* {page === 'book' && <BookIndex />} */}
+                {page === 'book' && <BookIndex />}
             </main>
         </section>
     )
