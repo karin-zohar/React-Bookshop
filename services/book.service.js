@@ -20,13 +20,13 @@ export const bookService = {
 function query(filterBy = {}) {
     return storageService.query(BOOK_KEY)
         .then(books => {
-            if (filterBy.txt) {
-                const regExp = new RegExp(filterBy.txt, 'i')
-                books = books.filter(book => regExp.text(book.title))
+            if (filterBy.title) {
+                const regExp = new RegExp(filterBy.title, 'i')
+                books = books.filter(book => regExp.test(book.title))
             }
 
             if (filterBy.maxPrice) {
-                books = books.filter(book => book.price <= filterBy.maxPrice)
+                books = books.filter(book => book.listPrice.amount <= filterBy.maxPrice)
             }
             return books
         })
@@ -55,7 +55,7 @@ function getDefaultFilter() {
 
 
 function getEmptyBook(title = '', listPrice = {amount: '', currencyCode: 'USD', isOnSale: false}, subtitle = '', authors = [], publishedDate = '',
-description = '', pageCount = '', categories = [], thumbnail='',language='en',) {
+description = '', pageCount = '', categories = [], thumbnail='https://plus.unsplash.com/premium_photo-1677151193419-9be7a26c02cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',language='en',) {
     return {
         id: '',
         title,
@@ -67,7 +67,8 @@ description = '', pageCount = '', categories = [], thumbnail='',language='en',) 
         pageCount,
         categories,
         thumbnail,
-        language
+        language,
+        reviews: []
     }
 }
 

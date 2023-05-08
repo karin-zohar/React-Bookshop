@@ -1,3 +1,41 @@
 * {
     box-sizing: border-box;
   }
+
+  body {
+    background-color: var(--clr2);
+    color: var(--clr1);
+  }
+
+  a {
+    color: var(--clr4);
+    text-decoration: none;
+  }
+
+  a.active {
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  ul , li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  button { 
+    cursor: pointer;
+    border: none;
+    background-color: var(--clr3);
+    color: var(--clr4);
+    border-radius: 2em;
+    padding: 0.5em;
+  }
+
+  a:hover {
+    color: var(--clr1);
+  }
+
+  button:hover {
+    color: var(--clr1);
+  }

@@ -1,7 +1,7 @@
 function createEventEmitter() {
     const listenersMap = {}
     // Trick for DEBUG
-    window.mapmap = listenersMap
+    // window.mapmap = listenersMap
     return {
         // Use this function to subscribe to an event
         on(evName, listener) {
@@ -42,18 +42,6 @@ const unsubscribe = eventBusService.on('some-event', (data) => {
 })
 
 eventBusService.emit('some-event', { num: 100 })
-// Just as example - unsubscribe after 2 secs
-// setTimeout(() => {
-//     unsubscribe()
-// }, 2000)
-setTimeout(() => eventBusService.emit('some-event', 100), 3000)
-
-
-
-
-
-
-
 
 window.showSuccessMsg = showSuccessMsg
 window.showErrorMsg = showErrorMsg

@@ -10,19 +10,21 @@ export function BookFilter({ filterBy, onSetFilter }) {
     }, [filterByToEdit])
 
     function handleChange({ target }) {
+        console.log('handle change')
         const field = target.name
         const value = target.type === 'number' ? (+target.value || '') : target.value
         setFilterByToEdit(prevFilterBy => ({ ...prevFilterBy, [field]: value }))
     }
 
     function onSubmitFilter(ev) {
+        console.log('on submit filter')
         ev.preventDefault()
         onSetFilter(filterByToEdit)
     }
 
     const { title, maxPrice } = filterByToEdit
     return (
-        <section className="book-filter">
+        <section className="book-filter full main-layout">
             <form onSubmit={onSubmitFilter}>
                 <label htmlFor="title">Title:</label>
                 <input type="text" value={title} name="title" id="title" placeholder="By title" onChange={handleChange} />
