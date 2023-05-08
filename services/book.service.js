@@ -99,7 +99,12 @@ function checkPriceRange(book) {
     if (price < 20) return {color: 'green'}
 }
 
-
+// _createReview()
+function _createReview(bookId, fullname, rating, readAt, txt) {
+  const book = get(BookId)
+  const review = {fullname, rating, readAt, txt}
+  book.reviews.push(review)
+}
 
 function _createBooks() {
     let books = utilService.loadFromStorage(BOOK_KEY)
