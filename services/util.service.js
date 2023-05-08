@@ -3,7 +3,8 @@ export const utilService = {
     makeLorem,
     getRandomIntInclusive,
     loadFromStorage,
-    saveToStorage
+    saveToStorage,
+    getCurrencySymbol
 }
 
 function makeId(length = 6) {
@@ -41,3 +42,14 @@ function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
 }
+
+function getCurrencySymbol(currencyCode) {
+    switch (currencyCode) {
+      case 'EUR':
+        return '€'
+      case 'ILS':
+        return '₪'
+      case 'USD':
+        return '$'
+    }
+  }

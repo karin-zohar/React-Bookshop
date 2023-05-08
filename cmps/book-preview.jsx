@@ -1,9 +1,11 @@
 export function BookPreview({book}) {
     return (
-        <article className="car-preview">
-            <h2>Title: {book.title}</h2>
-            <h4>List Price: {book.listPrice}</h4>
-            
+        <article className="book-preview">
+            <h2>{book.title}</h2>
+            <h3>{book.authors}</h3>
+            <h4>{`${book.listPrice.currencyCode} ${book.listPrice.amount}`}</h4>
+            <img src={book.thumbnail} alt={`${book.title} cover`} />
+            <p></p>
         </article>
     )
 }
