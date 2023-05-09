@@ -7,6 +7,7 @@ import { BookFilter } from "../cmps/book-filter.jsx"
 import { BookList } from "../cmps/book-list.jsx"
 import { BookDetails } from "./book-details.jsx"
 import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
+import { SearchBookFromGoogle } from "../cmps/search-book-from-google.jsx"
 
 
 export function BookIndex() {
@@ -44,6 +45,7 @@ export function BookIndex() {
             {!selectedBook && <React.Fragment>
                 <BookFilter onSetFilter={onSetFilter} filterBy={filterBy} />
                 <Link to="/book/edit"><button>Add Book</button></Link>
+                <SearchBookFromGoogle />
                 <BookList onSelectBook={onSelectBook} books={books} onRemoveBook={onRemoveBook} />
             </React.Fragment>}
 

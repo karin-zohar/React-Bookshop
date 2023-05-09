@@ -18,7 +18,8 @@ export const bookService = {
   getEmptyReview,
   saveReview,
   getNextBookId,
-  getPrevBookId
+  getPrevBookId,
+  getBooksFromGoogle
 }
 
 
@@ -137,6 +138,38 @@ function getPrevBookId(bookId) {
       if (bookIdx === 0) bookIdx = books.length - 1
       return books[bookIdx - 1].id
     })
+}
+
+function getBooksFromGoogle(search) {
+  const url = `https://www.googleapis.com/books/v1/volumes?printType=books&q=${search}`
+  return axios.get(url)
+    .then(res => {
+      return res.data.items.map(item => item.volumeInfo)
+    })
+    .then(makeGoogleBooksData)
+    .catch(err => {
+      console.log('err: ', err)
+    })
+}
+
+function makeGoogleBooksData(books) {
+  return books.map(book => ({
+    id: utilService.makeId(),
+    title: book.title,
+    subtitle: book.subtitle,
+    authors: book.authors,
+    publishedDate: book.publishedDate,
+    description: book.description,
+    pageCount: book.pageCount,
+    categories: book.categories,
+    thumbnail: book.imageLinks ? book.imageLinks.thumbnail : '',
+    language: book.language,
+    listPrice: {
+      amount: utilService.getRandomIntInclusive(10,150),
+      currencyCode: 'USD',
+      isOnSale: false
+    }
+  }));
 }
 
 

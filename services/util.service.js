@@ -4,7 +4,8 @@ export const utilService = {
     getRandomIntInclusive,
     loadFromStorage,
     saveToStorage,
-    getCurrencySymbol
+    getCurrencySymbol,
+    debounce
 }
 
 function makeId(length = 6) {
@@ -53,3 +54,17 @@ function getCurrencySymbol(currencyCode) {
         return '$'
     }
   }
+
+  function debounce(func, delay) {
+    let timerId;
+    return function(...args) {
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+      timerId = setTimeout(() => {
+        func.apply(this, args);
+        timerId = null;
+      }, delay);
+    };
+  }
+  
